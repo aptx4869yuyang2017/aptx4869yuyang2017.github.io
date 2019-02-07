@@ -1,131 +1,207 @@
-<?xml version="1.0" encoding="utf-8"?>
-<search>
+<!doctype html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no">
     
     
-    <entry>
-        <title><![CDATA[【图表挑战】如何在Tableau中画雷达图]]></title>
-        <url>http://yoursite.com/2019/02/07/%E9%9B%B7%E8%BE%BE%E5%9B%BE/</url>
-        <content type="html"><![CDATA[<p><img src="https://ws1.sinaimg.cn/large/006tNc79ly1fzr8dwi5o9j30q00uak3v.jpg" alt=""></p>
-<p>这次还是彻底的模仿，模仿一个卡塔尔兄弟<a href="https://public.tableau.com/profile/mahfooj.khan#!/vizhome/DigitalEconomyandSocietyIndex2018/MM2019WK5" target="_blank" rel="noopener">Mahfooj Khan的作品</a>，顺便这次卡塔尔亚洲杯闯入决赛，甚是威武。</p>
-<h1 id="一、关于雷达图"><a href="#一、关于雷达图" class="headerlink" title="一、关于雷达图"></a>一、关于雷达图</h1><p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fzr0jhca5oj31j40eswjs.jpg" alt=""></p>
-<p><a href="https://public.tableau.com/views/TopTrumpsCardGameAnalysis/RadarDashboard?:embed=y&amp;:display_count=no&amp;:showVizHome=no#1" target="_blank" rel="noopener">交互地址</a></p>
-<p>这是一个对漫威超级英雄能力值可是化的项目。通过雷达图 <strong>面积</strong> 快速判断英雄的整体强弱，通过 <strong>形状</strong> 快速判断英雄的类型，例如是敏捷型或者力量型等等。对比两个英雄时候，叠加两个雷达图尤其方便。</p>
-<p><strong>劣势</strong>：但是雷达图和其他在二维坐标下展示的图表相比，读取具体的数值不是特别方便和直观。</p>
-<p>雷达图对<strong>多维数据</strong>的展示非常直观，从某种角度上也是是一种强化<strong>对比</strong>的图表类型，实际展示的数值不是最重要的。所以雷达图特别适合这种评分数据。比如这个英雄能力值的评分实际上就是一种对比机制，并不会对实际评分做具体的量化，比如对速度的评分实际并不会和百米速度相关。</p>
-<p>这次图表挑战的数据恰巧也是评分数据，评分经过好几层的各种计算、综合，绝对大小已经没有实际意义。做出这个指数的目的就是在于<strong>比较</strong>不同国家的相对状况，或者衡量进步程度。</p>
-<p>这次数据使用的是欧洲国家的 DESI 指数，分别从五个维度测量，</p>
-<p>以下的教程主要参考 <a href="https://www.thedataschool.co.uk/ellen-blackburn/a-simple-way-to-make-a-radar-chart/" target="_blank" rel="noopener">A Simple Way to Make a Radar Chart</a> 来讲。</p>
-<p>也参考了<a href="https://www.bilibili.com/video/av42341191/" target="_blank" rel="noopener">如何在Tableau中使用 雷达图（或蛛网图）- TC17「英文字幕」</a>。</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNc79ly1fzr8w3ze8aj31gs0u01kx.jpg" alt=""></p>
-<p><a href="https://www.bilibili.com/video/av42341191/" target="_blank" rel="noopener"></a></p>
-<p>相关数据下载：</p>
-<p><a href="https://pan.baidu.com/s/13SBr0J4PVKczEL0Uxi6h0A" target="_blank" rel="noopener">https://pan.baidu.com/s/13SBr0J4PVKczEL0Uxi6h0A</a>  密码:lm7k</p>
-<h1 id="二、雷达图原理"><a href="#二、雷达图原理" class="headerlink" title="二、雷达图原理"></a>二、雷达图原理</h1><p>Tableau中默认的坐标系是一个二维坐标系，当使用地图的时候才会切换成为地理坐标系。</p>
-<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzof5137dgj30w20u0wit.jpg" alt=""></p>
-<p>我们的雷达图实际上是一个极坐标系，每个特征占据一个角度，通过 <code>r</code> 的长度来映射数据。我们想要做的就是把用极坐标描述的图形，在Tableau默认的二维坐标系中画出来。</p>
-<p>所以雷达图的整体思路就是逐步翻译的过程：</p>
-<p><code>原始数据 -&gt; 极坐标 -&gt; 二维平面坐标</code></p>
-<h1 id="三、在Tableau中画雷达图"><a href="#三、在Tableau中画雷达图" class="headerlink" title="三、在Tableau中画雷达图"></a>三、在Tableau中画雷达图</h1><h2 id="第零步：准备工作"><a href="#第零步：准备工作" class="headerlink" title="第零步：准备工作"></a>第零步：准备工作</h2><p>连接数据</p>
-<h2 id="第一步：构建描述极坐标的计算字段"><a href="#第一步：构建描述极坐标的计算字段" class="headerlink" title="第一步：构建描述极坐标的计算字段"></a>第一步：构建描述极坐标的计算字段</h2><p>这一步就是 <strong>原始数据 -&gt; 极坐标</strong> 的计算字段的翻译</p>
-<ol>
-<li>构建 <em>Angel</em> 计算字段，也就是极坐标中的 角度 参数。<img src="https://ws1.sinaimg.cn/large/006tNc79ly1fzr30iyjyrj31fs0ic0vu.jpg" alt=""></li>
-<li>构建<code>Distence from the centre</code>计算字段，也就是极坐标中的 <code>r</code> 参数。<img src="https://ws2.sinaimg.cn/large/006tNc79ly1fzr31utbmpj30r20iaq3l.jpg" alt=""></li>
-</ol>
-<h2 id="第二步：构建描述二维平面坐标的计算字段"><a href="#第二步：构建描述二维平面坐标的计算字段" class="headerlink" title="第二步：构建描述二维平面坐标的计算字段"></a>第二步：构建描述二维平面坐标的计算字段</h2><p><strong>极坐标 -&gt; 二维平面坐标</strong> 的计算字段的翻译</p>
-<ol>
-<li>构建 <em>x</em> 计算字段，就是二维平面坐标的横轴坐标<img src="https://ws3.sinaimg.cn/large/006tNc79ly1fzr5zkju0vj30r20i8aaq.jpg" alt=""></li>
-<li>构建 <em>y</em> 计算字段，就是二维平面坐标的纵轴坐标<img src="https://ws3.sinaimg.cn/large/006tNc79ly1fzr6041mqkj30r20i6js1.jpg" alt=""></li>
-</ol>
-<h2 id="第三步：构建五边形"><a href="#第三步：构建五边形" class="headerlink" title="第三步：构建五边形"></a>第三步：构建五边形</h2><ol>
-<li>先选择一个国家来画五边形，所以将国家拖入筛选器，在筛选器中只保留一个国家。</li>
-<li>将 <em>Indicator</em> 拖放到 <em>详细信息标记卡</em>，设置<em>Indicator</em>排序为逆序。<img src="https://ws1.sinaimg.cn/large/006tNc79ly1fzr77e1fwgj30ro0igdlf.jpg" alt=""></li>
-<li>修改 <em>标记卡</em> 的图表类型为 <em>多边形</em></li>
-<li>将 <em>Angel</em> 字段拖放到 <em>路径标记卡</em>，调整 <em>Angel</em>表计算的依据为依据 <em>Indicator</em>。</li>
-<li>将 <em>x</em> 和 <em>y</em> 字段分别拖放至 <em>列功能区</em> <em>行功能区</em>，并同时调整表计算依据，依据 <em>Indicator</em>。</li>
-</ol>
-<p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fzr75ihz16j30zq0u077q.jpg" alt=""></p>
-<blockquote>
-<p><strong>回顾： 四个计算字段公式的含义</strong></p>
-</blockquote>
-<p>我们现在已经初步完成了一个五边形的绘制，所以短暂回顾一下这几个生成的计算字段所生成的公式到底完成了什么功能。</p>
-<p><strong>关于Angel</strong></p>
-<p><code>RUNNING_SUM(2*PI()/MIN({COUNTD([Indicator])}))+PI()/2</code></p>
-<blockquote>
-<p><em>MIN({countd([Indicator])})</em> 是用来计算整个数据源一共有多少个Indicator种类，如果你知道只有五个分析维度，实际上这里直接填写5也行<br><em>2</em>PI()/<em> 这部分实际上是把整个圆周分成了5份
-</em>RUNNING_SUM<em> 我们看到在实际使用过程中，我们表计算的依据选择是 </em>指数<em> 这个字段，实际实现的效果是判断具体的 </em>Indicator<em>具体所在的角度，所以要对评分后的角度进行角度的累加<br>将</em>Angle<em>作为多边形的路径，也是为了告知Tableau怎么对五个点进行连线。<br><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fzr74p3x7fj30pq0pejuj.jpg" alt="">
-</em>+PI()/2<em> 这部分是为了控制整个圆周的起点，我们可以调整这个值看看图形的效果。<br><img src="https://ws3.sinaimg.cn/large/006tNc79ly1fzr7h4234bj318t0u0tfh.jpg" alt=""><br>没有进行角度转换时，起点是x轴的正向方向<br><img src="https://ws1.sinaimg.cn/large/006tNc79ly1fzr7gbzonhj31au0u0tfn.jpg" alt="">
-</em>+PI()<em> 的效果是轴的起始方向放到了x轴负方向。<br><strong>Distence from the centre</strong><br><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fzr74p3x7fj30pq0pejuj.jpg" alt="">
-</em>Distence from the centre<em> 就是计算了橘黄色线段的长度，使用维度的分数来映射。
-</em>x<em> </em>y* 的计算起始就是极坐标向二维平面坐标的转换。</p>
-</blockquote>
-<h2 id="第四步：添加背景"><a href="#第四步：添加背景" class="headerlink" title="第四步：添加背景"></a>第四步：添加背景</h2><ol>
-<li>打开背景设定窗口 <code>地图菜单 - 背景图像 - 数据源</code> <img src="https://ws2.sinaimg.cn/large/006tNc79ly1fzr7p74fnrj311x0u0tm1.jpg" alt=""></li>
-<li>添加背景分享文件中的背景图片<img src="https://ws2.sinaimg.cn/large/006tNc79ly1fzr7srho55j316i0qgn4p.jpg" alt=""><img src="https://ws4.sinaimg.cn/large/006tNc79ly1fzr7tgywl4j30xo0q6wh0.jpg" alt=""></li>
-</ol>
-<p><strong>最终效果</strong></p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNc79ly1fzr7ugohphj31460u0q92.jpg" alt=""></p>
-<p>简单的加入一个国家数据，然后将国家拖入<em>颜色标记卡</em>，调整颜色透明度，可以看到两国五维数据的对比。</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNc79ly1fzr7vw8siuj31ao0u0aht.jpg" alt=""></p>
-<h2 id="第五步：美化"><a href="#第五步：美化" class="headerlink" title="第五步：美化"></a>第五步：美化</h2><p>这一步想加入一些点元素，强化维度数据的位置信息。</p>
-<ol>
-<li>再拖放一个<em>x</em>字段到 <em>列功能区</em>，同时做 <em>双轴 - 同步轴操作</em></li>
-<li>将两个 <em>标记卡</em> 中的 <em>度量名称</em> 的 <em>颜色标记卡</em> 都删除掉</li>
-<li>将新添加的 <em>标记卡</em> 修改为 <em>圆</em> 类型，调整一下颜色</li>
-</ol>
-<p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fzr841dajwj31500u0grp.jpg" alt=""></p>
-<p><strong>最后效果</strong><br>最后清理一下轴和边框</p>
-<p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1fzr85dq2auj314w0u0n48.jpg" alt=""></p>
-<p>完成！</p>
-<h1 id="四、图表挑战中的具体应用"><a href="#四、图表挑战中的具体应用" class="headerlink" title="四、图表挑战中的具体应用"></a>四、图表挑战中的具体应用</h1><p>这次尝试了一次长图式的排版，因为Tableau不能全屏显示排版，甚是痛苦，考虑到Tableau的主要服务对象暂时还不包括手机移动端，以后还是暂时不尝试长图了。</p>
-<p><em>Columns</em> 字段 <code>(INDEX()-1)%[col_num]</code></p>
-<p><em>Rows</em> 字段 <code>INT((INDEX()-1)/[col_num])</code></p>
-<p>其实还是排上次六边形地图的套路，表计算的依据设置为 <em>国家</em></p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNc79ly1fzr8mm1sptj31j20u0th0.jpg" alt=""></p>
-<p>国家的备注还是放到 <em>仪表板</em> 来排。</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNc79ly1fzr8nnvafsj30wg0hydiw.jpg" alt=""></p>
-<h1 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h1><h2 id="关于数据"><a href="#关于数据" class="headerlink" title="关于数据"></a>关于数据</h2><p>我个人觉得其实这次图表挑战的第一个关键点是对数据的理解。</p>
-<p>和前几次图表挑战的 宠物数量，红酒产量，失业率相比，原始数据中的数据只是一个分数，挑战题目只是简单翻译了一下并没有介绍，所以搞清楚这些数据采集计算方式，才不会出一些原则性的错误。</p>
-<p>资料具体可以查看官网，甚至中文百度也能找到一些有用的信息，我就不多引用数据了。</p>
-<h2 id="关于雷达图的设计"><a href="#关于雷达图的设计" class="headerlink" title="关于雷达图的设计"></a>关于雷达图的设计</h2><p>这次做的还是基本没有交互设计的部分，但从五边形的覆盖对比角度其实就能增加一些交互功能，来丰富图表能够传达的信息。</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNc79ly1fzsekigs36j31b90u0jz2.jpg" alt=""></p>
-<p>比如就像我们的教程中一个雷达图中，叠加多国数据可以对比各个维度的优劣，当然也可以叠加统计数据，比如多国指标均值，多国指标中位数等。</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNc79ly1fzsej9pp37j31bo0u0n4p.jpg" alt=""></p>
-<p>比如可以增加年份的选项来进行叠加对比能够清晰的看到每个国家的各个维度指标变化的状况。</p>
-<p>其实是我做图还不熟练，有些涉及到叠加的工作，还没想好数据怎么预先处理，所以有些想法只能暂时搁置。</p>
-<h2 id="Andy-自己画的几张图"><a href="#Andy-自己画的几张图" class="headerlink" title="Andy 自己画的几张图"></a>Andy 自己画的几张图</h2><p>组织者Andy在2月1日也做了一个简短<a href="http://www.makeovermonday.co.uk/week-5-2019-viz-review/" target="_blank" rel="noopener">复盘</a>，我们可以看看他的选择。</p>
-<p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1fzsf508d5aj30u00x1aed.jpg" alt=""><br>第一张是一个<strong>杠铃图的变种</strong>，没有交互设计，选择展示的主要信息还是各国 <strong>5年总体指标的进步</strong> 。</p>
-<p><img src="https://ws3.sinaimg.cn/large/006tNc79ly1fzsf713kx8j30u00uen1b.jpg" alt=""></p>
-<p>第二张是<strong>连线散点图</strong>，交互设计可以选择想要着重看的国家和两个维度。<br>这张完全没法看综合指标，所以重点是看<strong>单个指标的变化情况</strong>。</p>
-<p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1fzsfbbbkipj31450u0wlg.jpg" alt=""></p>
-<p>第三张是 跳动图(Jitter Plot)，交互设计可选国家。整体展示了5年各国各个维度的<strong>分数分布</strong>，重点信息是展示了<strong>选定国家的指标在分布中的位置</strong>，可以说这张是单页信息覆盖最多的。</p>
-<p><img src="https://ws1.sinaimg.cn/large/006tNc79ly1fzsfhr5vblj319a0u078k.jpg" alt=""></p>
-<p>第四张是雷达图，没有交互设计，只显示2018年。和我们不同的是，设计了色调来展示整体分数，其实我觉得雷达图面积已经能够反映一定信息了。</p>
-<p>看了四张图，其实我们也可以大体整理一下常规的图表展示的思路了。其实无非就是：</p>
-<p><strong>想要表达的重点 -&gt; 选择合适的图表</strong></p>
-<p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1fzsfms0u7aj312k0u04mh.jpg" alt=""></p>
-<p>所以，我觉得我在日后图表挑战中尽量从不同<strong>关系</strong> <strong>比较</strong> <strong>分布</strong> <strong>构成</strong> 等不同角度分析数据，为的是能够尽量熟悉各种图表的画法。</p>
-<h1 id="六、参考文章"><a href="#六、参考文章" class="headerlink" title="六、参考文章"></a>六、参考文章</h1><p><a href="https://www.thedataschool.co.uk/ellen-blackburn/a-simple-way-to-make-a-radar-chart/" target="_blank" rel="noopener">A Simple Way to Make a Radar Chart</a></p>
-]]></content>
-        
-        <categories>
-            
-            <category> Tableau </category>
-            
-        </categories>
-        
-        
-        <tags>
-            
-            <tag> Tableau可视化 </tag>
-            
-        </tags>
-        
-    </entry>
+    <!--Simple SEO-->
+
+
+<meta name="robots" content="all">
+<meta name="google" content="all">
+<meta name="googlebot" content="all">
+<meta name="verify" content="all">
+    <!--Title-->
+
+<title>markdown 测试文档 | 禹洋的数据博客</title>
+
+<link rel="alternate" href="/atom.xml" title="禹洋的数据博客" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
     
-    <entry>
-        <title><![CDATA[markdown 测试文档]]></title>
-        <url>http://yoursite.com/2019/02/01/markdown-test/</url>
-        <content type="html"><![CDATA[<p><a href="https://www.zybuluo.com/mdeditor" title="作业部落旗下 Cmd 在线 Markdown 编辑阅读器" target="_blank" rel="noopener">『Cmd 技术渲染的沙箱页面，点击此处编写自己的文档』</a></p>
+<link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/css/pages/post.css">
+<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/thirdParty/highlight/github.css">
+<link rel="stylesheet" href="/css/pages/comments.css">
+
+    <!--script-->
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<!--<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>-->
+
+
+<script src="/js/thirdParty/gitment.browser.min.js"></script>
+<script>
+  var labels = "blog,gitment";
+  labels = labels.split(",");
+  var gitment = new Gitment({
+    id: window.location.pathname,
+    owner: "GeekaholicLin",
+    repo: "geekaholiclin.github.io",
+    oauth: {
+      client_id: "aa2215dfc8ee944d1205",
+      client_secret: "77cd2afa5d161bc0ab04639ed81300d808c6e22b"
+    },
+    perPage: "20",
+    labels: labels
+  });
+</script>
+
+    
+    
+</head>
+</html>
+<body id="normal">
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<style>
+    header{ top: 71px; position: absolute!important;}
+    #container{padding-top: 151px!important;}
+</style>
+<div style="position:fixed;z-index:9999;left:0;top:0;width:100%;height:70px;background-color:#e0e0e0;color:#396CA5;border-bottom:1px solid #cecece;text-align:center;line-height:70px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<div id="wrap">
+    <header style="position: absolute;">
+    <div id="site-meta">
+        <a href="/" id="logo">
+            <h1 class="title">禹洋的数据博客</h1>
+        </a>
+        
+    </div>
+    <ul id="nav">
+        
+            <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
+        
+            <li><a href="/atom.xml"><i class="fa fa-rss"></i>RSS</a></li>
+        
+        <li id="search"><a href="javascript:void(0)"><i class="fa fa-search"></i>搜索</a></li>
+    </ul>
+</header>
+
+    <div id="container">
+        
+<ul id="sidebar">
+    
+    
+<li class="widget notification">
+    <i class="fa fa-bell-o"></i>
+    <div>
+        
+<p> 一个暂时专注于</p>
+<p>Tableau</p>
+<p>的小博客</p>
+    </div>
+</li>
+
+    
+    
+<li class="widget widget-normal category">
+    <h3 class="fa fa-th widget-title">分类</h3>
+    <ul class="category-list"><li class="category-list-item"><a class="category-list-link current" href="/categories/Tableau/"><i class="fa" aria-hidden="true">Tableau</i></a><span class="category-list-count">1</span></li></ul>
+</li>
+
+
+    
+    
+<li class="widget widget-normal archive">
+  <h3 class="fa fa-archive widget-title">归档</h3>
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/"><i class="fa" aria-hidden="true">二月 2019</i></a><span class="archive-list-count">2</span></li></ul>
+</li>
+
+
+    
+    
+<li class="widget widget-normal tags">
+  <h3 class="fa fa-tags widget-title">标签云</h3>
+  <div class="tagcloud-content">
+    
+      <a href="/tags/Tableau可视化/" style="font-size: 0.14rem; color: #69c">Tableau可视化</a>
+  </div>
+</li>
+
+
+    
+    
+<li class="widget widget-normal friends-link">
+    <h3 class="fa fa-globe widget-title">友链</h3><br>
+
+    
+        <a href="http://geekaholiclin.github.io" class="fa" target="_blank">主题作者</a>
+
+    
+
+</li>
+
+    
+</ul>
+
+
+        <div id="main">
+    <article id="post">
+        <div id="post-header">
+
+            <h1 id="markdown 测试文档">
+                
+                markdown 测试文档
+                
+            </h1>
+            <div class="article-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+        <span>未分类</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+         <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            null
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta ">2019/02/01</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+            <i class="fa fa-thermometer-three-quarters"></i>
+        <span class="hits hits-meta " data-leadcloud-title="markdown 测试文档" data-leadcloud-url="/2019/02/01/markdown-test/"><i class="fa fa-spinner fa-spin"></i></span>
+    </span>
+    
+    
+</div>
+
+            
+            
+        </div>
+        
+        <div id="post-body">
+            <p><a href="https://www.zybuluo.com/mdeditor" title="作业部落旗下 Cmd 在线 Markdown 编辑阅读器" target="_blank" rel="noopener">『Cmd 技术渲染的沙箱页面，点击此处编写自己的文档』</a></p>
 <h1 id="Cmd-Markdown-简明语法手册"><a href="#Cmd-Markdown-简明语法手册" class="headerlink" title="Cmd Markdown 简明语法手册"></a>Cmd Markdown 简明语法手册</h1><p>标签： Cmd-Markdown</p>
 <hr>
 <h3 id="1-斜体和粗体"><a href="#1-斜体和粗体" class="headerlink" title="1. 斜体和粗体"></a>1. 斜体和粗体</h3><p>使用 * 和 ** 表示斜体和粗体。</p>
@@ -284,11 +360,162 @@
 </ul>
 <p>[^footnote]: 这是一个 <em>注脚</em> 的 <strong>文本</strong>。</p>
 <p>[^footnote2]: 这是另一个 <em>注脚</em> 的 <strong>文本</strong>。</p>
-]]></content>
+
+        </div>
+        <div id="post-footer">
+            <div class="avatar">
+                <img src="http://example.com/author.jpg" alt="avatar">
+                
+                
+                <a href="javascript:void(0)" class="donate fa">您的打赏也是我分享的动力</a>
+                
+            </div>
+            <ul class="author-profile-section">
+                <li>
+                  
+                  作者:
+                  
+                    
+                    <a href="/about.html">禹洋</a>
+                </li>
+                
+                <li>发表日期: <span>2019-02-01  16:30:42</span></li>
+                
+                <li>最后编辑日期: <span>2019-02-07  16:32:52</span></li>
+                
+                <li class="post-category">
+                    文章分类:
+                    
+                </li>
+                <li class="post-tags">
+                    文章标签:
+                    
+                </li>
+                
+                <li> 版权声明: <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/" target="_blank">
+知识共享署名-非商业性使用-禁止演绎 3.0 未本地化版本许可协议（CC BY-NC-ND 3.0）
+</a></li>
+                
+            </ul>
+            <div id="donate-wrap">
+                
+                
+                
+                <img src="https://ws4.sinaimg.cn/large/006tNc79ly1fzxwi9s58bj30mu0ky773.jpg" alt="支付宝付款" class="donate-img">
+                
+                <img src="https://ws2.sinaimg.cn/large/006tNc79ly1fzxwhcie47j30qk0om79n.jpg" alt="微信付款" class="donate-img">
+                
+                
+            </div>
+        </div>
+    </article>
+    <div class="article-nav">
+        
+        <a href="/2019/02/07/雷达图/" class="pre-post fa fa-caret-left">【图表挑战】如何在Tableau中画雷达图</a>
         
         
-    </entry>
+    </div>
+    
+    <div id="comments">
+        
+
+<script>
+  gitment.render(document.getElementById("comments"));
+</script>
+
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+    <footer id="footer">
+    
+    <div class="social">
+        
+        <a href="https://www.example1.com" class="fa fa-free-code-camp" target="_blank" title="freecodecamp"></a>
+        
+        <a href="https://www.example2.com" class="fa fa-github" target="_blank" title="Follow me~"></a>
+        
+    </div>
+    
+    <div>
+        
+        <a href="/" class="copyright-links">禹洋</a>&copy;2018 - 2019.All Rights
+        Reserved.
+    </div>
+    <p>Powered by <a href="https://hexo.io" class="copyright-links" target="_blank">Hexo</a> | Theme by <a href="https://github.com/GeekaholicLin" class="copyright-links" target="_blank">GeekaholicLin</a>
+    </p>
     
     
+    <p>
+        <span id="busuanzi_container_site_uv" class="fa fa-bar-chart">
+        欢迎第<span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span>位小伙伴~
+        </span>
+    </p>
     
-</search>
+</footer>
+
+</div>
+    <ul id="tools">
+    <li class="totop-btn fa fa-angle-up"></li>
+    <li class="exchange-btn fa fa-exchange"></li>
+  
+    <li class="toc-btn fa fa-list-ul"></li>
+    
+    
+
+    
+    <li class="comment-btn fa fa-comments-o">
+        <a href="#comments" title="comments"></a>
+    </li>
+    
+</ul>
+<p id="process"></p>
+<div id="search-overlay">
+    <div class="search-area-wrap">
+        <div id="search-area">
+            <div class="input-wrap focus">
+                <i class="fa fa-search" aria-hidden="true"></i>
+                <input id="search-input" autofocus autocomplete="off" type="text" placeholder="search this website...">
+            </div>
+            <ul id="search-result">
+                <li class="load-first"><i class="fa fa-spinner fa-pulse"></i></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Cmd-Markdown-简明语法手册"><span class="toc-number">1.</span> <span class="toc-text">Cmd Markdown 简明语法手册</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-斜体和粗体"><span class="toc-number">1.0.1.</span> <span class="toc-text">1. 斜体和粗体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-分级标题"><span class="toc-number">1.0.2.</span> <span class="toc-text">2. 分级标题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-外链接"><span class="toc-number">1.0.3.</span> <span class="toc-text">3. 外链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-无序列表"><span class="toc-number">1.0.4.</span> <span class="toc-text">4. 无序列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-有序列表"><span class="toc-number">1.0.5.</span> <span class="toc-text">5. 有序列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-文字引用"><span class="toc-number">1.0.6.</span> <span class="toc-text">6. 文字引用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-行内代码块"><span class="toc-number">1.0.7.</span> <span class="toc-text">7. 行内代码块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-代码块"><span class="toc-number">1.0.8.</span> <span class="toc-text">8.  代码块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-插入图像"><span class="toc-number">1.0.9.</span> <span class="toc-text">9.  插入图像</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#Cmd-Markdown-高阶语法手册"><span class="toc-number">2.</span> <span class="toc-text">Cmd Markdown 高阶语法手册</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-内容目录"><span class="toc-number">2.0.1.</span> <span class="toc-text">1. 内容目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-标签分类"><span class="toc-number">2.0.2.</span> <span class="toc-text">2. 标签分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-删除线"><span class="toc-number">2.0.3.</span> <span class="toc-text">3. 删除线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-注脚"><span class="toc-number">2.0.4.</span> <span class="toc-text">4. 注脚</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-LaTeX-公式"><span class="toc-number">2.0.5.</span> <span class="toc-text">5. LaTeX 公式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-加强的代码块"><span class="toc-number">2.0.6.</span> <span class="toc-text">6. 加强的代码块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-流程图"><span class="toc-number">2.0.7.</span> <span class="toc-text">7. 流程图</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#示例"><span class="toc-number">2.0.7.1.</span> <span class="toc-text">示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#更多语法参考：流程图语法参考"><span class="toc-number">2.0.7.2.</span> <span class="toc-text">更多语法参考：流程图语法参考</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-序列图"><span class="toc-number">2.0.8.</span> <span class="toc-text">8. 序列图</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#示例-1"><span class="toc-number">2.0.8.1.</span> <span class="toc-text">示例 1</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#示例-2"><span class="toc-number">2.0.8.2.</span> <span class="toc-text">示例 2</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#更多语法参考：序列图语法参考"><span class="toc-number">2.0.8.3.</span> <span class="toc-text">更多语法参考：序列图语法参考</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-甘特图"><span class="toc-number">2.0.9.</span> <span class="toc-text">9. 甘特图</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#更多语法参考：甘特图语法参考"><span class="toc-number">2.0.9.1.</span> <span class="toc-text">更多语法参考：甘特图语法参考</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-Mermaid-流程图"><span class="toc-number">2.0.10.</span> <span class="toc-text">10. Mermaid 流程图</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#更多语法参考：Mermaid-流程图语法参考"><span class="toc-number">2.0.10.1.</span> <span class="toc-text">更多语法参考：Mermaid 流程图语法参考</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-Mermaid-序列图"><span class="toc-number">2.0.11.</span> <span class="toc-text">11. Mermaid 序列图</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#更多语法参考：Mermaid-序列图语法参考"><span class="toc-number">2.0.11.1.</span> <span class="toc-text">更多语法参考：Mermaid 序列图语法参考</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-表格支持"><span class="toc-number">2.0.12.</span> <span class="toc-text">12. 表格支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-定义型列表"><span class="toc-number">2.0.13.</span> <span class="toc-text">13. 定义型列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#14-Html-标签"><span class="toc-number">2.0.14.</span> <span class="toc-text">14. Html 标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#15-内嵌图标"><span class="toc-number">2.0.15.</span> <span class="toc-text">15. 内嵌图标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#16-待办事宜-Todo-列表"><span class="toc-number">2.0.16.</span> <span class="toc-text">16. 待办事宜 Todo 列表</span></a></li></ol></li>
+
+
+
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+    //theme config datas
+    var copyrightObj = {};
+    copyrightObj.enable = 'true';
+    copyrightObj.triggerCopyLength = '200';
+    copyrightObj.appendText = '商业转载请联系作者获得授权,非商业转载请注明出处 © example';
+    var leancloudObj = {};
+    leancloudObj.enable = 'true';
+    leancloudObj.className = 'BlogCounter';
+    leancloudObj.limits = '10';
+</script>
+<script type="text/javascript">
+    var search = {};
+    var search_path = "search.xml";
+    if (!search_path) {
+        search_path = "search.xml";
+    }
+    search.path = "/" + search_path;
+    search.func =  _ajax.init();
+</script>
+<script src="/js/app.js"></script>
+
+
+</body>
+</html>

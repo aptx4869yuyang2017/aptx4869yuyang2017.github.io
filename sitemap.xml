@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/02/01/markdown-test/</loc>
+    
+    <lastmod>2019-02-07T08:32:52.804Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/02/07/%E9%9B%B7%E8%BE%BE%E5%9B%BE/</loc>
     
     <lastmod>2019-02-07T08:29:27.921Z</lastmod>
