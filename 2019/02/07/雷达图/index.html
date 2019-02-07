@@ -203,7 +203,7 @@
         <div id="post-body">
             <p><img src="https://ws1.sinaimg.cn/large/006tNc79ly1fzr8dwi5o9j30q00uak3v.jpg" alt=""></p>
 <p>这次还是彻底的模仿，模仿一个卡塔尔兄弟<a href="https://public.tableau.com/profile/mahfooj.khan#!/vizhome/DigitalEconomyandSocietyIndex2018/MM2019WK5" target="_blank" rel="noopener">Mahfooj Khan的作品</a>，顺便这次卡塔尔亚洲杯闯入决赛，甚是威武。</p>
-<h1 id="一-关于雷达图"><a href="#一-关于雷达图" class="headerlink" title="一 关于雷达图"></a>一 关于雷达图</h1><p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fzr0jhca5oj31j40eswjs.jpg" alt=""></p>
+<h1 id="一、关于雷达图"><a href="#一、关于雷达图" class="headerlink" title="一、关于雷达图"></a>一、关于雷达图</h1><p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fzr0jhca5oj31j40eswjs.jpg" alt=""></p>
 <p><a href="https://public.tableau.com/views/TopTrumpsCardGameAnalysis/RadarDashboard?:embed=y&amp;:display_count=no&amp;:showVizHome=no#1" target="_blank" rel="noopener">交互地址</a></p>
 <p>这是一个对漫威超级英雄能力值可是化的项目。通过雷达图 <strong>面积</strong> 快速判断英雄的整体强弱，通过 <strong>形状</strong> 快速判断英雄的类型，例如是敏捷型或者力量型等等。对比两个英雄时候，叠加两个雷达图尤其方便。</p>
 <p><strong>劣势</strong>：但是雷达图和其他在二维坐标下展示的图表相比，读取具体的数值不是特别方便和直观。</p>
@@ -216,12 +216,12 @@
 <p><a href="https://www.bilibili.com/video/av42341191/" target="_blank" rel="noopener"></a></p>
 <p>相关数据下载：</p>
 <p><a href="https://pan.baidu.com/s/13SBr0J4PVKczEL0Uxi6h0A" target="_blank" rel="noopener">https://pan.baidu.com/s/13SBr0J4PVKczEL0Uxi6h0A</a>  密码:lm7k</p>
-<h1 id="二-雷达图原理"><a href="#二-雷达图原理" class="headerlink" title="二 雷达图原理"></a>二 雷达图原理</h1><p>Tableau中默认的坐标系是一个二维坐标系，当使用地图的时候才会切换成为地理坐标系。</p>
+<h1 id="二、雷达图原理"><a href="#二、雷达图原理" class="headerlink" title="二、雷达图原理"></a>二、雷达图原理</h1><p>Tableau中默认的坐标系是一个二维坐标系，当使用地图的时候才会切换成为地理坐标系。</p>
 <p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fzof5137dgj30w20u0wit.jpg" alt=""></p>
 <p>我们的雷达图实际上是一个极坐标系，每个特征占据一个角度，通过 <code>r</code> 的长度来映射数据。我们想要做的就是把用极坐标描述的图形，在Tableau默认的二维坐标系中画出来。</p>
 <p>所以雷达图的整体思路就是逐步翻译的过程：</p>
 <p><code>原始数据 -&gt; 极坐标 -&gt; 二维平面坐标</code></p>
-<h1 id="三-在Tableau中画雷达图"><a href="#三-在Tableau中画雷达图" class="headerlink" title="三 在Tableau中画雷达图"></a>三 在Tableau中画雷达图</h1><h2 id="第零步：准备工作"><a href="#第零步：准备工作" class="headerlink" title="第零步：准备工作"></a>第零步：准备工作</h2><p>连接数据</p>
+<h1 id="三、在Tableau中画雷达图"><a href="#三、在Tableau中画雷达图" class="headerlink" title="三、在Tableau中画雷达图"></a>三、在Tableau中画雷达图</h1><h2 id="第零步：准备工作"><a href="#第零步：准备工作" class="headerlink" title="第零步：准备工作"></a>第零步：准备工作</h2><p>连接数据</p>
 <h2 id="第一步：构建描述极坐标的计算字段"><a href="#第一步：构建描述极坐标的计算字段" class="headerlink" title="第一步：构建描述极坐标的计算字段"></a>第一步：构建描述极坐标的计算字段</h2><p>这一步就是 <strong>原始数据 -&gt; 极坐标</strong> 的计算字段的翻译</p>
 <ol>
 <li>构建 <em>Angel</em> 计算字段，也就是极坐标中的 角度 参数。<img src="https://ws1.sinaimg.cn/large/006tNc79ly1fzr30iyjyrj31fs0ic0vu.jpg" alt=""></li>
@@ -275,14 +275,14 @@
 <p><strong>最后效果</strong><br>最后清理一下轴和边框</p>
 <p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1fzr85dq2auj314w0u0n48.jpg" alt=""></p>
 <p>完成！</p>
-<h1 id="四-图表挑战中的具体应用"><a href="#四-图表挑战中的具体应用" class="headerlink" title="四 图表挑战中的具体应用"></a>四 图表挑战中的具体应用</h1><p>这次尝试了一次长图式的排版，因为Tableau不能全屏显示排版，甚是痛苦，考虑到Tableau的主要服务对象暂时还不包括手机移动端，以后还是暂时不尝试长图了。</p>
+<h1 id="四、图表挑战中的具体应用"><a href="#四、图表挑战中的具体应用" class="headerlink" title="四、图表挑战中的具体应用"></a>四、图表挑战中的具体应用</h1><p>这次尝试了一次长图式的排版，因为Tableau不能全屏显示排版，甚是痛苦，考虑到Tableau的主要服务对象暂时还不包括手机移动端，以后还是暂时不尝试长图了。</p>
 <p><em>Columns</em> 字段 <code>(INDEX()-1)%[col_num]</code></p>
 <p><em>Rows</em> 字段 <code>INT((INDEX()-1)/[col_num])</code></p>
 <p>其实还是排上次六边形地图的套路，表计算的依据设置为 <em>国家</em></p>
 <p><img src="https://ws1.sinaimg.cn/large/006tNc79ly1fzr8mm1sptj31j20u0th0.jpg" alt=""></p>
 <p>国家的备注还是放到 <em>仪表板</em> 来排。</p>
 <p><img src="https://ws3.sinaimg.cn/large/006tNc79ly1fzr8nnvafsj30wg0hydiw.jpg" alt=""></p>
-<h1 id="五-总结"><a href="#五-总结" class="headerlink" title="五 总结"></a>五 总结</h1><h2 id="关于数据"><a href="#关于数据" class="headerlink" title="关于数据"></a>关于数据</h2><p>我个人觉得其实这次图表挑战的第一个关键点是对数据的理解。</p>
+<h1 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h1><h2 id="关于数据"><a href="#关于数据" class="headerlink" title="关于数据"></a>关于数据</h2><p>我个人觉得其实这次图表挑战的第一个关键点是对数据的理解。</p>
 <p>和前几次图表挑战的 宠物数量，红酒产量，失业率相比，原始数据中的数据只是一个分数，挑战题目只是简单翻译了一下并没有介绍，所以搞清楚这些数据采集计算方式，才不会出一些原则性的错误。</p>
 <p>资料具体可以查看官网，甚至中文百度也能找到一些有用的信息，我就不多引用数据了。</p>
 <h2 id="关于雷达图的设计"><a href="#关于雷达图的设计" class="headerlink" title="关于雷达图的设计"></a>关于雷达图的设计</h2><p>这次做的还是基本没有交互设计的部分，但从五边形的覆盖对比角度其实就能增加一些交互功能，来丰富图表能够传达的信息。</p>
@@ -303,7 +303,7 @@
 <p><strong>想要表达的重点 -&gt; 选择合适的图表</strong></p>
 <p><img src="https://ws4.sinaimg.cn/large/006tNc79ly1fzsfms0u7aj312k0u04mh.jpg" alt=""></p>
 <p>所以，我觉得我在日后图表挑战中尽量从不同<strong>关系</strong> <strong>比较</strong> <strong>分布</strong> <strong>构成</strong> 等不同角度分析数据，为的是能够尽量熟悉各种图表的画法。</p>
-<h1 id="六-参考文章"><a href="#六-参考文章" class="headerlink" title="六 参考文章"></a>六 参考文章</h1><p><a href="https://www.thedataschool.co.uk/ellen-blackburn/a-simple-way-to-make-a-radar-chart/" target="_blank" rel="noopener">A Simple Way to Make a Radar Chart</a></p>
+<h1 id="六、参考文章"><a href="#六、参考文章" class="headerlink" title="六、参考文章"></a>六、参考文章</h1><p><a href="https://www.thedataschool.co.uk/ellen-blackburn/a-simple-way-to-make-a-radar-chart/" target="_blank" rel="noopener">A Simple Way to Make a Radar Chart</a></p>
 
         </div>
         <div id="post-footer">
@@ -325,7 +325,7 @@
                 
                 <li>发表日期: <span>2019-02-07  11:06:35</span></li>
                 
-                <li>最后编辑日期: <span>2019-02-07  16:20:46</span></li>
+                <li>最后编辑日期: <span>2019-02-07  16:24:14</span></li>
                 
                 <li class="post-category">
                     文章分类:
@@ -434,7 +434,7 @@
     </div>
 </div>
 
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一-关于雷达图"><span class="toc-number">1.</span> <span class="toc-text">一 关于雷达图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二-雷达图原理"><span class="toc-number">2.</span> <span class="toc-text">二 雷达图原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三-在Tableau中画雷达图"><span class="toc-number">3.</span> <span class="toc-text">三 在Tableau中画雷达图</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#第零步：准备工作"><span class="toc-number">3.1.</span> <span class="toc-text">第零步：准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第一步：构建描述极坐标的计算字段"><span class="toc-number">3.2.</span> <span class="toc-text">第一步：构建描述极坐标的计算字段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第二步：构建描述二维平面坐标的计算字段"><span class="toc-number">3.3.</span> <span class="toc-text">第二步：构建描述二维平面坐标的计算字段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第三步：构建五边形"><span class="toc-number">3.4.</span> <span class="toc-text">第三步：构建五边形</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#回顾：-四个计算字段公式的含义"><span class="toc-number">3.4.0.1.</span> <span class="toc-text">回顾： 四个计算字段公式的含义</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第四步：添加背景"><span class="toc-number">3.5.</span> <span class="toc-text">第四步：添加背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第五步：美化"><span class="toc-number">3.6.</span> <span class="toc-text">第五步：美化</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#四-图表挑战中的具体应用"><span class="toc-number">4.</span> <span class="toc-text">四 图表挑战中的具体应用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#五-总结"><span class="toc-number">5.</span> <span class="toc-text">五 总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于数据"><span class="toc-number">5.1.</span> <span class="toc-text">关于数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于雷达图的设计"><span class="toc-number">5.2.</span> <span class="toc-text">关于雷达图的设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Andy-自己画的几张图"><span class="toc-number">5.3.</span> <span class="toc-text">Andy 自己画的几张图</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#六-参考文章"><span class="toc-number">6.</span> <span class="toc-text">六 参考文章</span></a></li>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、关于雷达图"><span class="toc-number">1.</span> <span class="toc-text">一、关于雷达图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、雷达图原理"><span class="toc-number">2.</span> <span class="toc-text">二、雷达图原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、在Tableau中画雷达图"><span class="toc-number">3.</span> <span class="toc-text">三、在Tableau中画雷达图</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#第零步：准备工作"><span class="toc-number">3.1.</span> <span class="toc-text">第零步：准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第一步：构建描述极坐标的计算字段"><span class="toc-number">3.2.</span> <span class="toc-text">第一步：构建描述极坐标的计算字段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第二步：构建描述二维平面坐标的计算字段"><span class="toc-number">3.3.</span> <span class="toc-text">第二步：构建描述二维平面坐标的计算字段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第三步：构建五边形"><span class="toc-number">3.4.</span> <span class="toc-text">第三步：构建五边形</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#回顾：-四个计算字段公式的含义"><span class="toc-number">3.4.0.1.</span> <span class="toc-text">回顾： 四个计算字段公式的含义</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第四步：添加背景"><span class="toc-number">3.5.</span> <span class="toc-text">第四步：添加背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第五步：美化"><span class="toc-number">3.6.</span> <span class="toc-text">第五步：美化</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#四、图表挑战中的具体应用"><span class="toc-number">4.</span> <span class="toc-text">四、图表挑战中的具体应用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#五、总结"><span class="toc-number">5.</span> <span class="toc-text">五、总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于数据"><span class="toc-number">5.1.</span> <span class="toc-text">关于数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于雷达图的设计"><span class="toc-number">5.2.</span> <span class="toc-text">关于雷达图的设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Andy-自己画的几张图"><span class="toc-number">5.3.</span> <span class="toc-text">Andy 自己画的几张图</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#六、参考文章"><span class="toc-number">6.</span> <span class="toc-text">六、参考文章</span></a></li>
 
 
 
