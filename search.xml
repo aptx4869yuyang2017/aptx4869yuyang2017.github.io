@@ -44,7 +44,8 @@
 <li>将 <em>x</em> 和 <em>y</em> 字段分别拖放至 <em>列功能区</em> <em>行功能区</em>，并同时调整表计算依据，依据 <em>Indicator</em>。</li>
 </ol>
 <p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fzr75ihz16j30zq0u077q.jpg" alt=""></p>
-<h4 id="回顾：-四个计算字段公式的含义"><a href="#回顾：-四个计算字段公式的含义" class="headerlink" title="回顾： 四个计算字段公式的含义"></a>回顾： 四个计算字段公式的含义</h4><p>我们现在已经初步完成了一个五边形的绘制，所以短暂回顾一下这几个生成的计算字段所生成的公式到底完成了什么功能。</p>
+<p><strong>回顾： 四个计算字段公式的含义</strong></p>
+<p>我们现在已经初步完成了一个五边形的绘制，所以短暂回顾一下这几个生成的计算字段所生成的公式到底完成了什么功能。</p>
 <p><strong>关于Angel</strong></p>
 <p><code>RUNNING_SUM(2*PI()/MIN({COUNTD([Indicator])}))+PI()/2</code></p>
 <p><em>MIN({countd([Indicator])})</em> 是用来计算整个数据源一共有多少个Indicator种类，如果你知道只有五个分析维度，实际上这里直接填写5也行</p>
