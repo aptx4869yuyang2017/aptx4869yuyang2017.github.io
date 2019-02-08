@@ -20,9 +20,9 @@
 <meta name="verify" content="all">
     <!--Title-->
 
-<title>【图表挑战】如何在Tableau中画雷达图 | 禹洋的数据博客</title>
+<title>【图表挑战】如何在Tableau中画雷达图 | 据说能用数据讲故事</title>
 
-<link rel="alternate" href="/atom.xml" title="禹洋的数据博客" type="application/atom+xml">
+<link rel="alternate" href="/atom.xml" title="据说能用数据讲故事" type="application/atom+xml">
 
 
 <link rel="icon" href="/favicon.ico">
@@ -32,16 +32,45 @@
 <link rel="stylesheet" href="/css/pages/post.css">
 <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="/css/thirdParty/highlight/github.css">
-<link rel="stylesheet" href="/.css">
+<link rel="stylesheet" href="/css/pages/comments.css">
 
     <!--script-->
 
+
+<script src="http://cdn1.lncld.net/static/js/3.2.1/av-min.js"></script>
+<script>
+  var appId = "l63RSwct1fKpKw19Si871fTs-gzGzoHsz";
+  var appKey = "5VgqnhGhMhb03fEo3tBn0nca";
+  var region = "";
+  AV.init({
+    appId: appId,
+    appKey: appKey,
+    region: region
+  });
+</script>
 
 
 <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 <!--<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>-->
 
+
+<script src="/js/thirdParty/gitment.browser.min.js"></script>
+<script>
+  var labels = "blog,gitment";
+  labels = labels.split(",");
+  var gitment = new Gitment({
+    id: window.location.pathname,
+    owner: "aptx4869yuyang2017",
+    repo: "aptx4869yuyang2017.github.io",
+    oauth: {
+      client_id: "e4a0028c50b66addc559",
+      client_secret: "f75d6a297275f51b8a135ef4250af833967d4393"
+    },
+    perPage: "20",
+    labels: labels
+  });
+</script>
 
     
     
@@ -76,7 +105,7 @@
     <header style="position: absolute;">
     <div id="site-meta">
         <a href="/" id="logo">
-            <h1 class="title">禹洋的数据博客</h1>
+            <h1 class="title">据说能用数据讲故事</h1>
         </a>
         
     </div>
@@ -406,6 +435,10 @@
     
     
 
+    
+    <li class="comment-btn fa fa-comments-o">
+        <a href="#comments" title="comments"></a>
+    </li>
     
 </ul>
 <p id="process"></p>
