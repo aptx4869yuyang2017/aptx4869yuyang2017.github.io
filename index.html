@@ -120,7 +120,7 @@
     
 <li class="widget widget-normal category">
     <h3 class="fa fa-th widget-title">分类</h3>
-    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Tableau可视化/"><i class="fa" aria-hidden="true">Tableau可视化</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link current" href="/categories/数据准备/"><i class="fa" aria-hidden="true">数据准备</i></a><span class="category-list-count">1</span></li></ul>
+    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Tableau可视化/"><i class="fa" aria-hidden="true">Tableau可视化</i></a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link current" href="/categories/数据准备/"><i class="fa" aria-hidden="true">数据准备</i></a><span class="category-list-count">1</span></li></ul>
 </li>
 
 
@@ -128,7 +128,7 @@
     
 <li class="widget widget-normal archive">
   <h3 class="fa fa-archive widget-title">归档</h3>
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/"><i class="fa" aria-hidden="true">二月 2019</i></a><span class="archive-list-count">3</span></li></ul>
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/"><i class="fa" aria-hidden="true">二月 2019</i></a><span class="archive-list-count">4</span></li></ul>
 </li>
 
 
@@ -138,7 +138,7 @@
   <h3 class="fa fa-tags widget-title">标签云</h3>
   <div class="tagcloud-content">
     
-      <a href="/tags/Tableau-Prep/" style="font-size: 0.14rem; color: #69c">Tableau Prep</a> <a href="/tags/TC18/" style="font-size: 0.14rem; color: #69c">TC18</a> <a href="/tags/图表挑战/" style="font-size: 0.14rem; color: #69c">图表挑战</a> <a href="/tags/可视化/" style="font-size: 0.14rem; color: #69c">可视化</a> <a href="/tags/图表技巧/" style="font-size: 0.14rem; color: #69c">图表技巧</a>
+      <a href="/tags/Tableau-Prep/" style="font-size: 0.14rem; color: #69c">Tableau Prep</a> <a href="/tags/TC18/" style="font-size: 0.14rem; color: #69c">TC18</a> <a href="/tags/图表挑战/" style="font-size: 0.14rem; color: #69c">图表挑战</a> <a href="/tags/可视化/" style="font-size: 0.2rem; color: #0a407c">可视化</a> <a href="/tags/图表技巧/" style="font-size: 0.2rem; color: #0a407c">图表技巧</a>
   </div>
 </li>
 
@@ -173,6 +173,86 @@
     
     
     
+    
+    
+    <li class="article-excerpt-wrap " _href="/2019/02/17/[tableau_tip]round_bar_plot/">
+        <div class="article-img img-ajax" data-src="https://ws4.sinaimg.cn/large/006tKfTcgy1g09aspoz98j30r906lglp.jpg">
+           <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
+        </div>
+        <div class="article-excerpt">
+            
+            <a class="article-title-link" href="/2019/02/17/[tableau_tip]round_bar_plot/">
+                <h2 class="article-title">在Tableau中画一个圆角条形图</h2>
+            </a>
+            
+            <p class="article-content">
+                
+有时为了仪表板的综合效果，将直角的柱形图调整成圆角的柱形图能够有效匹配整体风格。比如上图中我使用了 圆角柱形图 来匹配日期的 圆形 。
+这里介绍Tableau中圆角柱形图的画法。
+第一步：创建普通柱形图数据使用软件自带的超市数据。
+使用 类别 和 销售额 构建一个普通柱形图。
+
+第二步：创建辅助变量
+在 列功能区 使用生成 临时计算 的方法生成一个 AVG(0) 度量类型的字段
+效果：
+第三步：生成双柱图
+将列功能区中的 AVG(0) 字段，拖入 总和(销售额) 的坐标轴上，生成一个双轴图。
+效果：
+
+第四步：更改图表类型为 线
+调整图表类型为 线。
+
+将 度量名称 拖入到 路径 标记卡。
+
+通过调整 大小 标记卡，空值条形图的粗细。
+最后清理一下各种标记，参考线，轴线的效果：
+
+总结
+创建普通柱形图
+通过临时计算生成辅助字段
+生成双柱图
+修改图表类型为 线
+
+参考资料：方法依旧来...
+            </p>
+            <div class="article-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+        <span>Tableau可视化</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+         <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            可视化
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta ">2019/02/17</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+            <i class="fa fa-thermometer-three-quarters"></i>
+        <span class="hits hits-meta " data-leadcloud-title="在Tableau中画一个圆角条形图" data-leadcloud-url="/2019/02/17/[tableau_tip]round_bar_plot/"><i class="fa fa-spinner fa-spin"></i></span>
+    </span>
+    
+    
+    <a href="/2019/02/17/[tableau_tip]round_bar_plot/" class="read-article">阅读全文</a>
+    
+</div>
+
+        </div>
+        
+    </li>
     
     
     <li class="article-excerpt-wrap " _href="/2019/02/09/tc-用Tableau-Prep的方式准备数据/">
