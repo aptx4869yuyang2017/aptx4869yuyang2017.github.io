@@ -120,7 +120,7 @@
     
 <li class="widget widget-normal category">
     <h3 class="fa fa-th widget-title">分类</h3>
-    <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Tableau可视化/"><i class="fa" aria-hidden="true">Tableau可视化</i></a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link current" href="/categories/数据准备/"><i class="fa" aria-hidden="true">数据准备</i></a><span class="category-list-count">1</span></li></ul>
+    <ul class="category-list"><li class="category-list-item"><a class="category-list-link current" href="/categories/Tableau可视化/"><i class="fa" aria-hidden="true">Tableau可视化</i></a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据准备/"><i class="fa" aria-hidden="true">数据准备</i></a><span class="category-list-count">1</span></li></ul>
 </li>
 
 
@@ -128,7 +128,7 @@
     
 <li class="widget widget-normal archive">
   <h3 class="fa fa-archive widget-title">归档</h3>
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/"><i class="fa" aria-hidden="true">二月 2019</i></a><span class="archive-list-count">4</span></li></ul>
+    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/"><i class="fa" aria-hidden="true">二月 2019</i></a><span class="archive-list-count">5</span></li></ul>
 </li>
 
 
@@ -138,7 +138,7 @@
   <h3 class="fa fa-tags widget-title">标签云</h3>
   <div class="tagcloud-content">
     
-      <a href="/tags/Tableau-Prep/" style="font-size: 0.14rem; color: #69c">Tableau Prep</a> <a href="/tags/TC18/" style="font-size: 0.14rem; color: #69c">TC18</a> <a href="/tags/图表挑战/" style="font-size: 0.14rem; color: #69c">图表挑战</a> <a href="/tags/可视化/" style="font-size: 0.2rem; color: #0a407c">可视化</a> <a href="/tags/图表技巧/" style="font-size: 0.2rem; color: #0a407c">图表技巧</a>
+      <a href="/tags/图表技巧/" style="font-size: 0.2rem; color: #0a407c">图表技巧</a> <a href="/tags/可视化/" style="font-size: 0.2rem; color: #0a407c">可视化</a> <a href="/tags/Tableau-Prep/" style="font-size: 0.14rem; color: #69c">Tableau Prep</a> <a href="/tags/TC18/" style="font-size: 0.14rem; color: #69c">TC18</a> <a href="/tags/图表挑战/" style="font-size: 0.14rem; color: #69c">图表挑战</a>
   </div>
 </li>
 
@@ -175,6 +175,76 @@
     
     
     
+    <li class="article-excerpt-wrap " _href="/2019/02/17/calender_heatmap/">
+        <div class="article-img img-ajax" data-src="https://ws1.sinaimg.cn/large/006tKfTcgy1g09se4ip9pj30if0kf0vi.jpg">
+           <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
+        </div>
+        <div class="article-excerpt">
+            
+            <a class="article-title-link" href="/2019/02/17/calender_heatmap/">
+                <h2 class="article-title">Tableau 画日历热力图</h2>
+            </a>
+            
+            <p class="article-content">
+                可以在tableau public下载本次可视化的文件。
+数据选用默认的超市数据的2017年整年数据，也方便大家操作。
+第一步：单月的日历框架
+将 订单日期 字段拖放至 列工作区，修改日期显示层级为 离散-工作日 。
+生成计算字段 当月周数 DATEDIFF(&#39;week&#39;, DATETRUNC(&#39;month&#39;, [订单日期]), [订单日期])，将该字段拖放至 行功能区，修改字段类型为 维度 离散 。
+
+右击 当月周数 字段标题，取消勾选 显示标题
+
+将 订单日期 字段拖放至 筛选器 ，通过 离散-年/月 筛选，选择一个月
+
+将 销售额 字段拖放至 颜色标记卡
+将 订单日期 字段拖放至 标签标记卡，修改日期显示层级为 离散-天
+修改图表类型为 方形
+
+第一步效果
+
+我们实现了一个月的日历框架。
+注意我们这设置行列关系使用的都是通过 离散字段 生成的 标...
+            </p>
+            <div class="article-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+            <i class="fa fa-folder-open-o"></i>
+        <span>Tableau可视化</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+         <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            图表技巧
+            
+        </span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta ">2019/02/17</span>
+    </span>
+    
+    
+    <span class="fa-wrap">
+            <i class="fa fa-thermometer-three-quarters"></i>
+        <span class="hits hits-meta " data-leadcloud-title="Tableau 画日历热力图" data-leadcloud-url="/2019/02/17/calender_heatmap/"><i class="fa fa-spinner fa-spin"></i></span>
+    </span>
+    
+    
+    <a href="/2019/02/17/calender_heatmap/" class="read-article">阅读全文</a>
+    
+</div>
+
+        </div>
+        
+    </li>
+    
+    
     <li class="article-excerpt-wrap " _href="/2019/02/17/[tableau_tip]round_bar_plot/">
         <div class="article-img img-ajax" data-src="https://ws4.sinaimg.cn/large/006tKfTcgy1g09aspoz98j30r906lglp.jpg">
            <div class="loading-img"><i class="fa fa-pulse fa-spinner"></i></div>
@@ -182,7 +252,7 @@
         <div class="article-excerpt">
             
             <a class="article-title-link" href="/2019/02/17/[tableau_tip]round_bar_plot/">
-                <h2 class="article-title">在Tableau中画一个圆角条形图</h2>
+                <h2 class="article-title">Tableau画圆角条形图</h2>
             </a>
             
             <p class="article-content">
@@ -228,7 +298,7 @@
          <i class="fa fa-tags"></i>
         <span class="tags-meta">
             
-            可视化
+            图表技巧
             
         </span>
     </span>
@@ -242,7 +312,7 @@
     
     <span class="fa-wrap">
             <i class="fa fa-thermometer-three-quarters"></i>
-        <span class="hits hits-meta " data-leadcloud-title="在Tableau中画一个圆角条形图" data-leadcloud-url="/2019/02/17/[tableau_tip]round_bar_plot/"><i class="fa fa-spinner fa-spin"></i></span>
+        <span class="hits hits-meta " data-leadcloud-title="Tableau画圆角条形图" data-leadcloud-url="/2019/02/17/[tableau_tip]round_bar_plot/"><i class="fa fa-spinner fa-spin"></i></span>
     </span>
     
     
@@ -359,7 +429,7 @@ Tableau Conference的视频
          <i class="fa fa-tags"></i>
         <span class="tags-meta">
             
-            图表挑战
+            图表技巧
             
         </span>
     </span>
