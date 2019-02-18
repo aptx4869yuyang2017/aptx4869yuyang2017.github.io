@@ -3,6 +3,84 @@
     
     
     <entry>
+        <title><![CDATA[2019-W07 图表挑战总结]]></title>
+        <url>http://yoursite.com/2019/02/18/MM-2019W07/</url>
+        <content type="html"><![CDATA[<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1g0ah86ysdfj313e0s878c.jpg" alt=""></p>
+<blockquote>
+<p>这次图表挑战是主题是特朗普的日程表。<a href="https://pan.baidu.com/s/13SBr0J4PVKczEL0Uxi6h0A" target="_blank" rel="noopener">链接</a> 密码:lm7k 。涉及的数据 作品 素材都在这里可以下载，以前的也会陆续补上。</p>
+</blockquote>
+<h1 id="一、图表选择"><a href="#一、图表选择" class="headerlink" title="一、图表选择"></a>一、图表选择</h1><p>因为分析问题的对象主要是时间，所以可以从三个维度来展示数据：</p>
+<ol>
+<li>总体的工作时间分布</li>
+<li>每周的工作时间分布</li>
+<li>每天的工作时间分布</li>
+</ol>
+<p>因为采集信息不多，缺失也有，还经历了圣诞-元旦假期，所以从按月度维度分析感觉意义不大，这里就不放月份维度了。</p>
+<p>我们就从Andy精选的作品，以及小数点社区中提交作品中看一下，大家是怎么从三个维度来展示数据的。</p>
+<p><a href="http://www.makeovermonday.co.uk/week-7-2019/" target="_blank" rel="noopener">Andy 精选的作品</a></p>
+<h2 id="维度一：总体的工作时间分布"><a href="#维度一：总体的工作时间分布" class="headerlink" title="维度一：总体的工作时间分布"></a>维度一：总体的工作时间分布</h2><p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1g0aehakt8qj318c0ro7hr.jpg" alt=""></p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1g0aekd5h48j311q0rstf4.jpg" alt=""></p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1g0aedymd5yj30hg0sejy1.jpg" alt=""></p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1g0aepufiflj30l40dstbx.jpg" alt=""><br>蛋同学的局部。</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1g0aerxxcrpj316w0c8tf4.jpg" alt=""><br>我自己作品的局部，惯例放个教程。<a href="https://zhuanlan.zhihu.com/p/56929963" target="_blank" rel="noopener">【Tableau技巧】如何画圆角条形图</a></p>
+<p>柱状图其实就能直观的反应各个工作时间的占比关系，当然可以直接展示汇总时间，也可以展示比例。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1g0aeqijruej30z90u0qpb.jpg" alt=""></p>
+<p>博文使用了环形图来展示占比，也是正统的做法。</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1g0af9sw7gdj30x20d4q96.jpg" alt=""><br>干脆直接使用 <strong>数字+图标</strong> 展示的效果也是意外的好。</p>
+<p>有意思的是前三张国外的作品其实是完整的作品，也都只用了一张图。而我们小数点社区的作品的图表数量都很多。</p>
+<p><strong>现在社区提交作品的同学感觉越来越少，我觉得大家不要觉得图表挑战一定要用什么高大上的图，得出惊天的结论才能参加。不如从简单的柱状图开始，用心画一张图，做一次提交，相信你总会有所收获。</strong></p>
+<h2 id="维度二：每周的工作类型分布"><a href="#维度二：每周的工作类型分布" class="headerlink" title="维度二：每周的工作类型分布"></a>维度二：每周的工作类型分布</h2><p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1g0af8ggs5yj30zg0tcgq8.jpg" alt=""></p>
+<p>万能的柱状图。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1g0afb4wiu9j30x40hmdv6.jpg" alt=""></p>
+<p>我模仿的一个作品。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1g0afdzk4fhj316k0fang6.jpg" alt=""><br>我自己的作品局部。</p>
+<p>我个人觉得从日历形式展示，读者非常熟悉，能够有效减少读者的认知负担，信息传达和展示的效果都非常好，所以我也用做了主图。主要展示行政时间的占比。</p>
+<p>下来依旧是教程<a href="https://zhuanlan.zhihu.com/p/56967984" target="_blank" rel="noopener">【Tableau技巧】如何画日历热力图</a></p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1g0afd97as2j313u0ton7c.jpg" alt=""></p>
+<p>博文用正方形热图的方式展示，与日历热图不同，对星期的数据做了汇总，增加了工作时间类型的维度，可以说是展示角度的不同选择。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1g0afcoif96j30z20u07i2.jpg" alt=""></p>
+<p>蛋同学选择了 正方形热图 + 柱形图，我个人感觉图表表达信息有点重复，可以做些精简。</p>
+<h2 id="维度三：每天工作时间分布"><a href="#维度三：每天工作时间分布" class="headerlink" title="维度三：每天工作时间分布"></a>维度三：每天工作时间分布</h2><p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1g0afpxf9h2j30f411uap4.jpg" alt=""></p>
+<p>Wendy堆同学的展示效果最好，其他作品展示方式类似，我就不放了。</p>
+<p>使用日期甘特图的感觉是这次图表挑战展示效果非常好的图表类型，Wendy堆同学这次的外部信息补充，配色，排版效果都非常好，要是我评选，肯定是这次小数点社区的第一，可惜交的比较晚。</p>
+<h2 id="二、排版设计"><a href="#二、排版设计" class="headerlink" title="二、排版设计"></a>二、排版设计</h2><p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1g0ag0k010rj30gg0rejxy.jpg" alt=""></p>
+<p>DiegoTParker 的这个作品虽然简单，但却是我这次最喜欢的一个排版。为了突出特朗普行政时间占比高，直接将行政时间的柱形独立出分区，整个穿过了文字部分，可以说是用排版技巧，传达了作者想要表答 <strong>“行政时间占比很高”</strong> 的信息。</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1g0ag5dpvagj31ey0ti4qp.jpg" alt=""></p>
+<p>然后是 Elnisa Marques 的作品。排版方式很正统，文字和主图部分做了底色的区隔，可以学习一下。<strong>图标+关键数据</strong> 的组合我很喜欢。</p>
+<p>最后介绍一下个人感觉这次图表挑战 <strong>最好的作品</strong> 。</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1g0agdy6b69j314v0u04qp.jpg" alt=""></p>
+<p><a href="https://public.tableau.com/profile/jusdespommes#!/vizhome/MAKOVERMONDAY-TRUMPSEXECUTIVETIME/MAKOVERMONDAY-TRUMPSEXECUTIVETIME" target="_blank" rel="noopener">public tableau地址</a></p>
+<p>图表与主题的完美契合。</p>
+<p>“Men build too many walls and not enough bridges” 先引用名人名言来讽刺特朗普的政策，逼格极高。</p>
+<p>可视化的图表则是用对称的柱状图来构成的墙分拐角，呼应主题。</p>
+<p>下方文字再吐槽一下 看新闻，打电话， 发推特的时间太多。。。</p>
+<p>完美的居中排版，非常稳重。右侧本来图例还能起到一定的展示总体时间比例的功能，左侧使用了特朗普的头像进行的构图平衡。</p>
+<p>配色上选用了深色的传说中的高贵系的配色方案，整体上有一种金属质感。</p>
+<p>字体是选择了一种纤细的偏精致的无衬线字体，放个链接可以下载的。<a href="https://befonts.com/coves-font.html" target="_blank" rel="noopener">下载地址</a></p>
+<p>再就没得吹了。</p>
+<p>放一下自己的作品。</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1g0ahh7wmwvj311e0u0h6n.jpg" alt=""><br><a href="https://public.tableau.com/profile/yuyang2019#!/vizhome/-MM2019W07/1" target="_blank" rel="noopener">Tableau Public</a></p>
+<p>最后再放一下相关数据作品的下载 <a href="https://pan.baidu.com/s/13SBr0J4PVKczEL0Uxi6h0A" target="_blank" rel="noopener">链接</a> 密码:lm7k</p>
+]]></content>
+        
+        <categories>
+            
+            <category> Tableau可视化 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 图表挑战 </tag>
+            
+            <tag> 可视化 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
         <title><![CDATA[Tableau 画日历热力图]]></title>
         <url>http://yoursite.com/2019/02/17/calender_heatmap/</url>
         <content type="html"><![CDATA[<p>可以在<br><a href="https://public.tableau.com/profile/yuyang2019#!/vizhome/calender_heatmap/sheet4" target="_blank" rel="noopener">tableau public</a>下载本次可视化的文件。</p>
@@ -85,9 +163,9 @@
         
         <tags>
             
-            <tag> 图表技巧 </tag>
-            
             <tag> 可视化 </tag>
+            
+            <tag> 图表技巧 </tag>
             
         </tags>
         
@@ -136,9 +214,9 @@
         
         <tags>
             
-            <tag> 图表技巧 </tag>
-            
             <tag> 可视化 </tag>
+            
+            <tag> 图表技巧 </tag>
             
         </tags>
         
@@ -337,11 +415,11 @@
         
         <tags>
             
-            <tag> 图表技巧 </tag>
+            <tag> 图表挑战 </tag>
             
             <tag> 可视化 </tag>
             
-            <tag> 图表挑战 </tag>
+            <tag> 图表技巧 </tag>
             
         </tags>
         
