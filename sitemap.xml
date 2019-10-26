@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/02/01/markdown-test/</loc>
+    
+    <lastmod>2019-10-26T11:24:03.770Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/02/18/MM-2019W07/</loc>
     
     <lastmod>2019-02-18T05:00:15.012Z</lastmod>
@@ -33,13 +40,6 @@
     <loc>http://yoursite.com/2019/02/09/tc-%E7%94%A8Tableau-Prep%E7%9A%84%E6%96%B9%E5%BC%8F%E5%87%86%E5%A4%87%E6%95%B0%E6%8D%AE/</loc>
     
     <lastmod>2019-02-09T15:01:46.972Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/02/01/markdown-test/</loc>
-    
-    <lastmod>2019-02-07T08:39:43.996Z</lastmod>
     
   </url>
   
