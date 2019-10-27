@@ -1,236 +1,361 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.8.0">
-    <!--Setting-->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="renderer" content="webkit|ie-comp|ie-stand">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="format-detection" content="telephone=no,email=no">
-    
-    
-    <!--Simple SEO-->
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
 
 
-<meta name="robots" content="all">
-<meta name="google" content="all">
-<meta name="googlebot" content="all">
-<meta name="verify" content="all">
-    <!--Title-->
-
-<title>在Tableau中画雷达图【图表挑战】 | 据说能用数据讲故事</title>
-
-<link rel="alternate" href="/atom.xml" title="据说能用数据讲故事" type="application/atom+xml">
 
 
-<link rel="icon" href="/favicon.ico">
-
-    
-<link rel="stylesheet" href="/css/base.css">
-<link rel="stylesheet" href="/css/pages/post.css">
-<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="/css/thirdParty/highlight/github.css">
-<link rel="stylesheet" href="/css/pages/comments.css">
-
-    <!--script-->
 
 
-<script src="http://cdn1.lncld.net/static/js/3.2.1/av-min.js"></script>
-<script>
-  var appId = "l63RSwct1fKpKw19Si871fTs-gzGzoHsz";
-  var appKey = "5VgqnhGhMhb03fEo3tBn0nca";
-  var region = "China";
-  AV.init({
-    appId: appId,
-    appKey: appKey,
-    region: region
-  });
-</script>
 
 
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
-<!--<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>-->
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
-<script src="/js/thirdParty/gitment.browser.min.js"></script>
-<script>
-  var labels = "blog,gitment";
-  labels = labels.split(",");
-  var gitment = new Gitment({
-    id: window.location.pathname,
-    owner: "aptx4869yuyang2017",
-    repo: "aptx4869yuyang2017.github.io",
-    oauth: {
-      client_id: "e4a0028c50b66addc559",
-      client_secret: "f75d6a297275f51b8a135ef4250af833967d4393"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="图表技巧,可视化,图表挑战,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="可视化是门手艺" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="这次还是彻底的模仿，模仿一个卡塔尔兄弟Mahfooj Khan的作品，顺便这次卡塔尔亚洲杯闯入决赛，甚是威武。 一、关于雷达图 交互地址 这是一个对漫威超级英雄能力值可是化的项目。通过雷达图 面积 快速判断英雄的整体强弱，通过 形状 快速判断英雄的类型，例如是敏捷型或者力量型等等。对比两个英雄时候，叠加两个雷达图尤其方便。 劣势：但是雷达图和其他在二维坐标下展示的图表相比，读取具体的数值不是特别">
+<meta name="keywords" content="图表技巧,可视化,图表挑战">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在Tableau中画雷达图【图表挑战】">
+<meta property="og:url" content="http://yoursite.com/2019/02/07/mm-19w05-雷达图/index.html">
+<meta property="og:site_name" content="可视化是门手艺">
+<meta property="og:description" content="这次还是彻底的模仿，模仿一个卡塔尔兄弟Mahfooj Khan的作品，顺便这次卡塔尔亚洲杯闯入决赛，甚是威武。 一、关于雷达图 交互地址 这是一个对漫威超级英雄能力值可是化的项目。通过雷达图 面积 快速判断英雄的整体强弱，通过 形状 快速判断英雄的类型，例如是敏捷型或者力量型等等。对比两个英雄时候，叠加两个雷达图尤其方便。 劣势：但是雷达图和其他在二维坐标下展示的图表相比，读取具体的数值不是特别">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79ly1fzr8dwi5o9j30q00uak3v.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79ly1fzr0jhca5oj31j40eswjs.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79ly1fzr8w3ze8aj31gs0u01kx.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79gy1fzof5137dgj30w20u0wit.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79ly1fzr30iyjyrj31fs0ic0vu.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79ly1fzr31utbmpj30r20iaq3l.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79ly1fzr5zkju0vj30r20i8aaq.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79ly1fzr6041mqkj30r20i6js1.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79ly1fzr77e1fwgj30ro0igdlf.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79ly1fzr75ihz16j30zq0u077q.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79ly1fzr74p3x7fj30pq0pejuj.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79ly1fzr7h4234bj318t0u0tfh.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79ly1fzr7gbzonhj31au0u0tfn.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79ly1fzr74p3x7fj30pq0pejuj.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79ly1fzr7p74fnrj311x0u0tm1.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79ly1fzr7srho55j316i0qgn4p.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79ly1fzr7tgywl4j30xo0q6wh0.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79ly1fzr7ugohphj31460u0q92.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79ly1fzr7vw8siuj31ao0u0aht.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79ly1fzr841dajwj31500u0grp.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79ly1fzr85dq2auj314w0u0n48.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79ly1fzr8mm1sptj31j20u0th0.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79ly1fzr8nnvafsj30wg0hydiw.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79ly1fzsekigs36j31b90u0jz2.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79ly1fzsej9pp37j31bo0u0n4p.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79ly1fzsf508d5aj30u00x1aed.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79ly1fzsf713kx8j30u00uen1b.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79ly1fzsfbbbkipj31450u0wlg.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79ly1fzsfhr5vblj319a0u078k.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNc79ly1fzsfms0u7aj312k0u04mh.jpg">
+<meta property="og:updated_time" content="2019-02-09T15:01:55.394Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在Tableau中画雷达图【图表挑战】">
+<meta name="twitter:description" content="这次还是彻底的模仿，模仿一个卡塔尔兄弟Mahfooj Khan的作品，顺便这次卡塔尔亚洲杯闯入决赛，甚是威武。 一、关于雷达图 交互地址 这是一个对漫威超级英雄能力值可是化的项目。通过雷达图 面积 快速判断英雄的整体强弱，通过 形状 快速判断英雄的类型，例如是敏捷型或者力量型等等。对比两个英雄时候，叠加两个雷达图尤其方便。 劣势：但是雷达图和其他在二维坐标下展示的图表相比，读取具体的数值不是特别">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/006tNc79ly1fzr8dwi5o9j30q00uak3v.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
     },
-    perPage: "20",
-    labels: labels
-  });
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
 </script>
 
-    
-    
-<script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'true', 'auto');
-    ga('send', 'pageview');
 
-</script>
+  <link rel="canonical" href="http://yoursite.com/2019/02/07/mm-19w05-雷达图/">
+
+
+
+
+
+  <title>在Tableau中画雷达图【图表挑战】 | 可视化是门手艺</title>
+  
+
+
+
+
+
+
+
 
 </head>
-</html>
-<body id="normal">
-<!--[if lte IE 8]>
-<style>
-    html{ font-size: 1em }
-</style>
-<![endif]-->
-<!--[if lte IE 9]>
-<style>
-    header{ top: 71px; position: absolute!important;}
-    #container{padding-top: 151px!important;}
-</style>
-<div style="position:fixed;z-index:9999;left:0;top:0;width:100%;height:70px;background-color:#e0e0e0;color:#396CA5;border-bottom:1px solid #cecece;text-align:center;line-height:70px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
-<![endif]-->
 
-<div id="wrap">
-    <header style="position: absolute;">
-    <div id="site-meta">
-        <a href="/" id="logo">
-            <h1 class="title">据说能用数据讲故事</h1>
-        </a>
-        
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">可视化是门手艺</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
     </div>
-    <ul id="nav">
-        
-            <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
-        
-            <li><a href="/atom.xml"><i class="fa fa-rss"></i>RSS</a></li>
-        
-        <li id="search"><a href="javascript:void(0)"><i class="fa fa-search"></i>搜索</a></li>
-    </ul>
-</header>
-
-    <div id="container">
-        
-<ul id="sidebar">
-    
-    
-<li class="widget notification">
-    <i class="fa fa-bell-o"></i>
-    <div>
-        
-<p> 一个暂时专注于</p>
-<p>Tableau</p>
-<p>的小博客</p>
-    </div>
-</li>
-
-    
-    
-<li class="widget widget-normal category">
-    <h3 class="fa fa-th widget-title">分类</h3>
-    <ul class="category-list"><li class="category-list-item"><a class="category-list-link current" href="/categories/Tableau可视化/"><i class="fa" aria-hidden="true">Tableau可视化</i></a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据准备/"><i class="fa" aria-hidden="true">数据准备</i></a><span class="category-list-count">1</span></li></ul>
-</li>
-
-
-    
-    
-<li class="widget widget-normal archive">
-  <h3 class="fa fa-archive widget-title">归档</h3>
-    <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/"><i class="fa" aria-hidden="true">二月 2019</i></a><span class="archive-list-count">6</span></li></ul>
-</li>
-
-
-    
-    
-<li class="widget widget-normal tags">
-  <h3 class="fa fa-tags widget-title">标签云</h3>
-  <div class="tagcloud-content">
-    
-      <a href="/tags/图表技巧/" style="font-size: 0.18rem; color: #295e97">图表技巧</a> <a href="/tags/可视化/" style="font-size: 0.2rem; color: #0a407c">可视化</a> <a href="/tags/图表挑战/" style="font-size: 0.16rem; color: #477bb1">图表挑战</a> <a href="/tags/Tableau-Prep/" style="font-size: 0.14rem; color: #69c">Tableau Prep</a> <a href="/tags/TC18/" style="font-size: 0.14rem; color: #69c">TC18</a>
+      
+        <p class="site-subtitle"></p>
+      
   </div>
-</li>
 
-
-    
-    
-<li class="widget widget-normal friends-link">
-    <h3 class="fa fa-globe widget-title">友链</h3><br>
-
-    
-        <a href="https://zhuanlan.zhihu.com/c_1072873072331321344" class="fa" target="_blank">知乎专栏</a>
-
-    
-        <a href="https://public.tableau.com/profile/.39297466#!/" class="fa" target="_blank">Tableau_Public</a>
-
-    
-        <a href="https://twitter.com/aptx4869yuyang" class="fa" target="_blank">Twitter</a>
-
-    
-
-</li>
-
-    
-</ul>
-
-
-        <div id="main">
-    <article id="post">
-        <div id="post-header">
-
-            <h1 id="在Tableau中画雷达图【图表挑战】">
-                
-                在Tableau中画雷达图【图表挑战】
-                
-            </h1>
-            <div class="article-meta">
-    
-    
-    <span class="categories-meta fa-wrap">
-            <i class="fa fa-folder-open-o"></i>
-        <span>Tableau可视化</span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-         <i class="fa fa-tags"></i>
-        <span class="tags-meta">
-            
-            图表技巧
-            
-        </span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-        <i class="fa fa-clock-o"></i>
-        <span class="date-meta ">2019/02/07</span>
-    </span>
-    
-    
-    <span class="fa-wrap">
-            <i class="fa fa-thermometer-three-quarters"></i>
-        <span class="hits hits-meta " data-leadcloud-title="在Tableau中画雷达图【图表挑战】" data-leadcloud-url="/2019/02/07/mm-19w05-雷达图/"><i class="fa fa-spinner fa-spin"></i></span>
-    </span>
-    
-    
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
-            
-            
-        </div>
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
         
-        <div id="post-body">
-            <p><img src="https://ws1.sinaimg.cn/large/006tNc79ly1fzr8dwi5o9j30q00uak3v.jpg" alt=""></p>
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/07/mm-19w05-雷达图/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="禹洋">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="可视化是门手艺">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">在Tableau中画雷达图【图表挑战】</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-07T11:06:35+08:00">
+                2019-02-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Tableau可视化/" itemprop="url" rel="index">
+                    <span itemprop="name">Tableau可视化</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://ws1.sinaimg.cn/large/006tNc79ly1fzr8dwi5o9j30q00uak3v.jpg" alt=""></p>
 <p>这次还是彻底的模仿，模仿一个卡塔尔兄弟<a href="https://public.tableau.com/profile/mahfooj.khan#!/vizhome/DigitalEconomyandSocietyIndex2018/MM2019WK5" target="_blank" rel="noopener">Mahfooj Khan的作品</a>，顺便这次卡塔尔亚洲杯闯入决赛，甚是威武。</p>
 <h1 id="一、关于雷达图"><a href="#一、关于雷达图" class="headerlink" title="一、关于雷达图"></a>一、关于雷达图</h1><p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fzr0jhca5oj31j40eswjs.jpg" alt=""></p>
 <p><a href="https://public.tableau.com/views/TopTrumpsCardGameAnalysis/RadarDashboard?:embed=y&amp;:display_count=no&amp;:showVizHome=no#1" target="_blank" rel="noopener">交互地址</a></p>
@@ -331,171 +456,394 @@
 <p>所以，我觉得我在日后图表挑战中尽量从不同<strong>关系</strong> <strong>比较</strong> <strong>分布</strong> <strong>构成</strong> 等不同角度分析数据，为的是能够尽量熟悉各种图表的画法。</p>
 <h1 id="六、参考文章"><a href="#六、参考文章" class="headerlink" title="六、参考文章"></a>六、参考文章</h1><p><a href="https://www.thedataschool.co.uk/ellen-blackburn/a-simple-way-to-make-a-radar-chart/" target="_blank" rel="noopener">A Simple Way to Make a Radar Chart</a></p>
 
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/图表技巧/" rel="tag"># 图表技巧</a>
+          
+            <a href="/tags/可视化/" rel="tag"># 可视化</a>
+          
+            <a href="/tags/图表挑战/" rel="tag"># 图表挑战</a>
+          
         </div>
-        <div id="post-footer">
-            <div class="avatar">
-                <img src="/./images/avatar.jpg" alt="avatar">
-                
-                
-                <a href="javascript:void(0)" class="donate fa">您的打赏也是我分享的动力</a>
-                
-            </div>
-            <ul class="author-profile-section">
-                <li>
-                  
-                  作者:
-                  
-                    
-                    <a href="/about.html">禹洋</a>
-                </li>
-                
-                <li>发表日期: <span>2019-02-07  11:06:35</span></li>
-                
-                <li>最后编辑日期: <span>2019-02-09  23:01:55</span></li>
-                
-                <li class="post-category">
-                    文章分类:
-                    
-                    <a href="/categories/Tableau可视化/">Tableau可视化</a>
-                    
-                </li>
-                <li class="post-tags">
-                    文章标签:
-                    
-                    <a href="/tags/图表技巧/">图表技巧</a>
-                    
-                    <a href="/tags/可视化/">可视化</a>
-                    
-                    <a href="/tags/图表挑战/">图表挑战</a>
-                    
-                </li>
-                
-                <li> 版权声明: <a href="https://creativecommons.org/licenses/by-nc-nd/3.0/" target="_blank">
-知识共享署名-非商业性使用-禁止演绎 3.0 未本地化版本许可协议（CC BY-NC-ND 3.0）
-</a></li>
-                
-            </ul>
-            <div id="donate-wrap">
-                
-                
-                
-                <img src="https://ws4.sinaimg.cn/large/006tNc79ly1fzxwi9s58bj30mu0ky773.jpg" alt="支付宝付款" class="donate-img">
-                
-                <img src="https://ws2.sinaimg.cn/large/006tNc79ly1fzxwhcie47j30qk0om79n.jpg" alt="微信付款" class="donate-img">
-                
-                
-            </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/01/markdown-test/" rel="next" title="markdown 测试文档">
+                <i class="fa fa-chevron-left"></i> markdown 测试文档
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/09/tc-用Tableau-Prep的方式准备数据/" rel="prev" title="用Tableau_Prep的方式准备数据「TC18」【一起看TC】">
+                用Tableau_Prep的方式准备数据「TC18」【一起看TC】 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
         </div>
-    </article>
-    <div class="article-nav">
-        
-        <a href="/2019/02/09/tc-用Tableau-Prep的方式准备数据/" class="pre-post fa fa-caret-left">用Tableau_Prep的方式准备数据「TC18」【一起看TC】</a>
-        
-        
-        <a href="/2019/02/01/markdown-test/" class="next-post fa">markdown 测试文档</a>
-        
-    </div>
-    
-    <div id="comments">
-        
+      
 
-<script>
-  gitment.render(document.getElementById("comments"));
-</script>
-
-
-
-    </div>
-    
-</div>
-
-
-    </div>
-    <footer id="footer">
-    
-    <div class="social">
-        
-        <a href="https://www.example1.com" class="fa fa-free-code-camp" target="_blank" title="freecodecamp"></a>
-        
-        <a href="https://www.example2.com" class="fa fa-github" target="_blank" title="Follow me~"></a>
-        
-    </div>
-    
-    <div>
-        
-        <a href="/" class="copyright-links">禹洋</a>&copy;2018 - 2019.All Rights
-        Reserved.
-    </div>
-    <p>Powered by <a href="https://hexo.io" class="copyright-links" target="_blank">Hexo</a> | Theme by <a href="https://github.com/GeekaholicLin" class="copyright-links" target="_blank">GeekaholicLin</a>
-    </p>
-    
-    
-    <p>
-        <span id="busuanzi_container_site_uv" class="fa fa-bar-chart">
-        欢迎第<span id="busuanzi_value_site_uv"><i class="fa fa-spinner fa-spin"></i></span>位小伙伴~
-        </span>
-    </p>
-    
-</footer>
-
-</div>
-    <ul id="tools">
-    <li class="totop-btn fa fa-angle-up"></li>
-    <li class="exchange-btn fa fa-exchange"></li>
+      
+      
+    </footer>
+  </div>
   
-    <li class="toc-btn fa fa-list-ul"></li>
-    
-    
+  
+  
+  </article>
 
-    
-    <li class="comment-btn fa fa-comments-o">
-        <a href="#comments" title="comments"></a>
-    </li>
-    
-</ul>
-<p id="process"></p>
-<div id="search-overlay">
-    <div class="search-area-wrap">
-        <div id="search-area">
-            <div class="input-wrap focus">
-                <i class="fa fa-search" aria-hidden="true"></i>
-                <input id="search-input" autofocus autocomplete="off" type="text" placeholder="search this website...">
-            </div>
-            <ul id="search-result">
-                <li class="load-first"><i class="fa fa-spinner fa-pulse"></i></li>
-            </ul>
-        </div>
+
+
+    <div class="post-spread">
+      
     </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">禹洋</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、关于雷达图"><span class="nav-number">1.</span> <span class="nav-text">一、关于雷达图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、雷达图原理"><span class="nav-number">2.</span> <span class="nav-text">二、雷达图原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三、在Tableau中画雷达图"><span class="nav-number">3.</span> <span class="nav-text">三、在Tableau中画雷达图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第零步：准备工作"><span class="nav-number">3.1.</span> <span class="nav-text">第零步：准备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第一步：构建描述极坐标的计算字段"><span class="nav-number">3.2.</span> <span class="nav-text">第一步：构建描述极坐标的计算字段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二步：构建描述二维平面坐标的计算字段"><span class="nav-number">3.3.</span> <span class="nav-text">第二步：构建描述二维平面坐标的计算字段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三步：构建五边形"><span class="nav-number">3.4.</span> <span class="nav-text">第三步：构建五边形</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第四步：添加背景"><span class="nav-number">3.5.</span> <span class="nav-text">第四步：添加背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第五步：美化"><span class="nav-number">3.6.</span> <span class="nav-text">第五步：美化</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四、图表挑战中的具体应用"><span class="nav-number">4.</span> <span class="nav-text">四、图表挑战中的具体应用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#五、总结"><span class="nav-number">5.</span> <span class="nav-text">五、总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于数据"><span class="nav-number">5.1.</span> <span class="nav-text">关于数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于雷达图的设计"><span class="nav-number">5.2.</span> <span class="nav-text">关于雷达图的设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Andy-自己画的几张图"><span class="nav-number">5.3.</span> <span class="nav-text">Andy 自己画的几张图</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#六、参考文章"><span class="nav-number">6.</span> <span class="nav-text">六、参考文章</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">禹洋</span>
+
+  
 </div>
 
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、关于雷达图"><span class="toc-number">1.</span> <span class="toc-text">一、关于雷达图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、雷达图原理"><span class="toc-number">2.</span> <span class="toc-text">二、雷达图原理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、在Tableau中画雷达图"><span class="toc-number">3.</span> <span class="toc-text">三、在Tableau中画雷达图</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#第零步：准备工作"><span class="toc-number">3.1.</span> <span class="toc-text">第零步：准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第一步：构建描述极坐标的计算字段"><span class="toc-number">3.2.</span> <span class="toc-text">第一步：构建描述极坐标的计算字段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第二步：构建描述二维平面坐标的计算字段"><span class="toc-number">3.3.</span> <span class="toc-text">第二步：构建描述二维平面坐标的计算字段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第三步：构建五边形"><span class="toc-number">3.4.</span> <span class="toc-text">第三步：构建五边形</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第四步：添加背景"><span class="toc-number">3.5.</span> <span class="toc-text">第四步：添加背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#第五步：美化"><span class="toc-number">3.6.</span> <span class="toc-text">第五步：美化</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、图表挑战中的具体应用"><span class="toc-number">4.</span> <span class="toc-text">四、图表挑战中的具体应用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#五、总结"><span class="toc-number">5.</span> <span class="toc-text">五、总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#关于数据"><span class="toc-number">5.1.</span> <span class="toc-text">关于数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#关于雷达图的设计"><span class="toc-number">5.2.</span> <span class="toc-text">关于雷达图的设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Andy-自己画的几张图"><span class="toc-number">5.3.</span> <span class="toc-text">Andy 自己画的几张图</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#六、参考文章"><span class="toc-number">6.</span> <span class="toc-text">六、参考文章</span></a></li></ol>
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
 
 
 
 
-<script src="/js/search.js"></script>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
 <script type="text/javascript">
-    //theme config datas
-    var copyrightObj = {};
-    copyrightObj.enable = 'true';
-    copyrightObj.triggerCopyLength = '200';
-    copyrightObj.appendText = '原作者：禹洋 -  商业转载请联系作者获得授权,非商业转载请注明出处';
-    var leancloudObj = {};
-    leancloudObj.enable = 'true';
-    leancloudObj.className = 'BlogCounter';
-    leancloudObj.limits = '10';
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
 </script>
-<script type="text/javascript">
-    var search = {};
-    var search_path = "search.xml";
-    if (!search_path) {
-        search_path = "search.xml";
-    }
-    search.path = "/" + search_path;
-    search.func =  _ajax.init();
-</script>
-<script src="/js/app.js"></script>
 
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
 
 </body>
 </html>
